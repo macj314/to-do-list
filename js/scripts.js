@@ -1,21 +1,25 @@
-function Task(){
-  this.task = [];
+function TaskList(){
+  this.list = [];
 }
 
-Task.prototype.addTask = function(string){
+TaskList.prototype.addTask = function(string){
   this.task.push(string);
 }
 
+function Task(task){
+  this.task = task;
+}
 
 $(document).ready(function(){
   $("#form-one").submit(function(event){
     event.preventDefault();
-    var newTask = $("#task").val();
+    var newTask = new Task ($("#task").val());
     addTask(newTask);
-    alert(task);
-    $("#output-list").text(task);
+    alert(newTask);
+    $("#output-list").text(TaskList);
   })
 })
+
 // $(document).ready(function(){
 //   $("#btn-task").onclick(function(event){
 //     event.preventDefault(); 
