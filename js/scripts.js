@@ -2,8 +2,8 @@ function TaskList(){
   this.list = [];
 }
 
-TaskList.prototype.addTask = function(string){
-  this.task.push(string);
+TaskList.prototype.addTask = function(task){
+  this.list.push(task);
 }
 
 function Task(task){
@@ -13,10 +13,11 @@ function Task(task){
 $(document).ready(function(){
   $("#form-one").submit(function(event){
     event.preventDefault();
+    var taskList = new TaskList();
     var newTask = new Task ($("#task").val());
-    addTask(newTask);
+    taskList.addTask(newTask);
     alert(newTask);
-    $("#output-list").text(TaskList);
+    $("#output-list").text(taskList.list[0]);
   })
 })
 
