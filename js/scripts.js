@@ -17,7 +17,7 @@ $(document).ready(function(){
     var newTask = new Task ($("#task").val());
     taskList.addTask(newTask);
     alert(newTask);
-    $("#output-list").text(taskList.list[0]);
+    $("#output-list") = JSON.stringify(taskList);
   })
 })
 
