@@ -1,9 +1,16 @@
 function TaskList(){
   this.list = [];
+  this.currentId = 0;
 }
 
 TaskList.prototype.addTask = function(task){
+  task.id = this.assignId();
   this.list.push(task);
+}
+
+TaskList.prototype.assignId = function(){
+  this.currentId =+ 1;
+  return this.currentId;
 }
 
 function Task(task){
@@ -15,6 +22,7 @@ $(document).ready(function(){
     event.preventDefault();
     var taskList = new TaskList();
     var newTask = new Task ($("#task").val());
+    taskList.assignId(newTask);
     taskList.addTask(newTask);
     alert(newTask);
     $("#output-list") = JSON.stringify(taskList);
