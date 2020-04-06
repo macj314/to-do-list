@@ -3,14 +3,15 @@ function TaskList(){
   this.currentId = 0;
 }
 
-TaskList.prototype.addTask = function(task){
-  task.id = this.assignId();
-  this.list.push(task);
-}
-
 TaskList.prototype.assignId = function(){
   this.currentId =+ 1;
   return this.currentId;
+}
+
+TaskList.prototype.addTask = function(task){
+  task.id = this.assignId();
+  this.list.push(task);
+
 }
 
 function Task(task){
@@ -21,11 +22,12 @@ $(document).ready(function(){
   $("#form-one").submit(function(event){
     event.preventDefault();
     var taskList = new TaskList();
-    var newTask = new Task ($("#task").val());
-    taskList.assignId(newTask);
+    var newTask =$("#task").val();
+    // var newTask = new Task ($("#task").val());
+    taskList.assignId();
     taskList.addTask(newTask);
     alert(newTask);
-    $("#output-list") = JSON.stringify(taskList);
+    $("#output-list").text(task);
   })
 })
 
